@@ -1,0 +1,259 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "127.0.0.1"
+        }
+    ],
+    "info": {
+        "name": "TodoApp",
+        "_postman_id": "a8b41822-d937-4176-b690-31a9c4b0c1e1",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/todos",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/todos"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "57"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":52,\"title\":\"\\uc548\\ub155\\ud558\\uc138\\uc694?\",\"content\":\"\\ud558\\ud558\\ud558\\ud558\",\"deadline\":\"2021-12-12\",\"isDone\":52,\"updated_at\":\"28 minutes ago \\uc804\\uc5d0 \\uc218\\uc815\\ub418\\uc5c8\\uc2b5\\ub2c8\\ub2e4.\"},{\"id\":51,\"title\":\"\\uc548\\ub155\\ud558\\uc138\\uc694?\",\"content\":\"\\ud558\\ud558\\ud558\",\"deadline\":\"\\ub9c8\\uac10\\uae30\\ud55c\\uc774 \\uc815\\ud574\\uc838 \\uc788\\uc9c0 \\uc54a\\uc2b5\\ub2c8\\ub2e4.\",\"isDone\":51,\"updated_at\":\"30 minutes ago \\uc804\\uc5d0 \\uc218\\uc815\\ub418\\uc5c8\\uc2b5\\ub2c8\\ub2e4.\"},{\"id\":2,\"title\":\"Reprehenderit.\",\"content\":\"Quisquam ipsa dignissimos qui ea ut quis maiores. Sit velit deleniti at est.\",\"deadline\":\"\\ub9c8\\uac10\\uae30\\ud55c\\uc774 \\uc815\\ud574\\uc838 \\uc788\\uc9c0 \\uc54a\\uc2b5\\ub2c8\\ub2e4.\",\"isDone\":2,\"updated_at\":\"1 hour ago \\uc804\\uc5d0 \\uc218\\uc815\\ub418\\uc5c8\\uc2b5\\ub2c8\\ub2e4.\"},{\"id\":3,\"title\":\"Eum.\",\"content\":\"Cum blanditiis voluptas est molestiae ex. Maiores est omnis labore nam atque.\",\"deadline\":\"\\ub9c8\\uac10\\uae30\\ud55c\\uc774 \\uc815\\ud574\\uc838 \\uc788\\uc9c0 \\uc54a\\uc2b5\\ub2c8\\ub2e4.\",\"isDone\":3,\"updated_at\":\"1 hour ago \\uc804\\uc5d0 \\uc218\\uc815\\ub418\\uc5c8\\uc2b5\\ub2c8\\ub2e4.\"},{\"id\":4,\"title\":\"Iste quae.\",\"content\":\"Aut voluptatibus voluptates cum nulla. Eos id et reiciendis numquam placeat.\",\"deadline\":\"\\ub9c8\\uac10\\uae30\\ud55c\\uc774 \\uc815\\ud574\\uc838 \\uc788\\uc9c0 \\uc54a\\uc2b5\\ub2c8\\ub2e4.\",\"isDone\":4,\"updated_at\":\"1 hour ago \\uc804\\uc5d0 \\uc218\\uc815\\ub418\\uc5c8\\uc2b5\\ub2c8\\ub2e4.\"}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":11,\"path\":\"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/v1\\\/todos\",\"per_page\":5,\"to\":5,\"total\":51}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/todos",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/todos"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"qecojijmmixynnibhlussaqdznaxngxzsstkqwxqnnmu\",\"content\":\"ldalxaoielhxaalvwortpoyyhfmhjlrtebrdiwwixsnitpjqzdmhodubchclytwilexicepuqlzjolufcgoofzozrxuogvmhphetinmaejnzqubgdxktyzjkwlakcxleqchgbbauiyjvkiqhadmczxalsmquwsxjhmpfnyogpdkcpogmtjulkoagvwkrbvnqqbcjcofcvycwuwxziztvravmbcftgvmthkuqwnabixlukwzvmvzovouuamzmhs\",\"deadline\":\"2021-08-22T11:21:44\",\"isDone\":false}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/todos\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/todos\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "14",
+                                    "description": "The ID of the todo."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "56"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"message\":\"\\ud574\\ub2f9 \\ud560\\uc77c\\uc744 \\ucc3e\\uc744 \\uc218\\uac00 \\uc5c6\\uc2b5\\ub2c8\\ub2e4.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/todos\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/todos\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "5",
+                                    "description": "The ID of the todo."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"cnoilpkytkikpgxorgniypsxpm\",\"content\":\"pekjnaljrgzpexnalqsugiehcdnxwbngzwxytsgvvfqrw\",\"deadline\":\"2021-08-22T11:21:44\",\"isDone\":false}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/todos\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/todos\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the todo."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
