@@ -9,12 +9,24 @@ use App\Models\Todo;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+
+/**
+ * @group 포스트 관리
+ *
+ * APIs for managing posts
+ * 포스트를 관리합니다.
+ */
 class TodoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Get a list of posts
      *
-     * @return Todo[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
+     * 포스트 리스트 가져오기
+     * <aside class="notice">We mean it; you really should.😕</aside>
+     *
+     * @queryParam page integer 페이지 Example: 1
+     * @responseFile status=200 scenario="성공" responses/todos.get.json
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
@@ -32,10 +44,15 @@ class TodoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * add a new todo
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return TodoResource
+     * 포스트 추가하기
+     * <aside class="notice">We mean it; you really should.😕</aside>
+     * @responseFile status=201 scenario="success" responses/todo.post.json
+     * @responseFile status=201 scenario="마감기한이 정해져 있지 않을 때" responses/todo.get.without_deadline.json
+     * @responseFile status=422 scenario="데이터가 유효하지 않을 때" responses/todo.invalid.json
+     * @param TodoRequest $request
+     * @return \Illuminate\Http\Response
      */
     public function store(TodoRequest $request)
     {
@@ -48,10 +65,17 @@ class TodoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * get a todo
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 특정 할일 가져오기
+     *
+     * <aside class="notice">urlParam 에 대한 설명</aside>
+     * @urlParam id integer required 할일 아이디 Example: 10
+     * /**
+     * @responseFile status=200 scenario="success" responses/todo.get.json
+     * @responseFile status=200 scenario="마감기한이 정해져 있지 않을때" responses/todo.get.without_deadline.json
+     * @responseFile status=404 scenario="todo not found" responses/todo.not_found.json
+     *
      */
     public function show($id)
     {
@@ -76,11 +100,15 @@ class TodoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a todo
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 특정 할일 수정하기
+     * <aside class="notice">We mean it; you really should.😕</aside>
+     * @urlParam id integer required 할일 아이디 Example: 10
+     * @responseFile status=200 scenario="success" responses/todo.post.json
+     * @responseFile status=404 scenario="todo not found" responses/todo.not_found.json
+     * @responseFile status=422 scenario="데이터가 유효하지 않을 때" responses/todo.invalid.json
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(TodoRequest $request, $id)
     {
@@ -100,10 +128,14 @@ class TodoController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove a todo
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 특정 할일 삭제하기
+     * <aside class="notice">We mean it; you really should.😕</aside>
+     * @urlParam id integer required 할일 아이디 Example: 10
+     * @response status=204 scenario="success" {}
+     * @responseFile status=404 scenario="todo not found" responses/todo.not_found.json
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {

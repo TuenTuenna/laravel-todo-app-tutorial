@@ -1,11 +1,11 @@
 # Introduction
 
+안녕하세요?! 오늘도 빡코딩 하고 계신가요? 본 api 는 연습용 api 입니다! 현재 버전은 [v1] 입니다.
 
+이 설명서는 API 사용에 필요한 모든 정보를 제공하는 것을 목적으로 합니다.
 
-This documentation aims to provide all the information you need to work with our API.
-
-<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<aside>스크롤할 때 오른쪽에 있는 어두운 영역(또는 모바일 컨텐츠의 일부로)에서 서로 다른 프로그래밍 언어로 API를 사용하기 위한 코드 예가 표시됩니다.
+오른쪽 상단에 있는 탭과 함께 사용되는 언어를 전환할 수 있습니다(또는 모바일의 왼쪽 상단에 있는 탐색 메뉴에서).</aside>
 
 > Base URL
 

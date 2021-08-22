@@ -1,103 +1,241 @@
-name: Endpoints
-description: ''
+name: '포스트 관리'
+description: |-
+
+  APIs for managing posts
+  포스트를 관리합니다.
 endpoints:
   -
     httpMethods:
       - GET
     uri: api/v1/todos
     metadata:
-      title: 'Display a listing of the resource.'
-      description: ''
+      title: 'Get a list of posts'
+      description: |-
+        포스트 리스트 가져오기
+        <aside class="notice">We mean it; you really should.😕</aside>
       authenticated: false
     headers:
       Content-Type: application/json
       Accept: application/json
+      Api-Version: v1
     urlParameters: []
-    queryParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 페이지
+        required: false
+        example: 1
+        type: integer
     bodyParameters: []
     responses:
       -
         status: 200
-        content: '{"data":[{"id":52,"title":"\uc548\ub155\ud558\uc138\uc694?","content":"\ud558\ud558\ud558\ud558","deadline":"2021-12-12","isDone":52,"updated_at":"28 minutes ago \uc804\uc5d0 \uc218\uc815\ub418\uc5c8\uc2b5\ub2c8\ub2e4."},{"id":51,"title":"\uc548\ub155\ud558\uc138\uc694?","content":"\ud558\ud558\ud558","deadline":"\ub9c8\uac10\uae30\ud55c\uc774 \uc815\ud574\uc838 \uc788\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.","isDone":51,"updated_at":"30 minutes ago \uc804\uc5d0 \uc218\uc815\ub418\uc5c8\uc2b5\ub2c8\ub2e4."},{"id":2,"title":"Reprehenderit.","content":"Quisquam ipsa dignissimos qui ea ut quis maiores. Sit velit deleniti at est.","deadline":"\ub9c8\uac10\uae30\ud55c\uc774 \uc815\ud574\uc838 \uc788\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.","isDone":2,"updated_at":"1 hour ago \uc804\uc5d0 \uc218\uc815\ub418\uc5c8\uc2b5\ub2c8\ub2e4."},{"id":3,"title":"Eum.","content":"Cum blanditiis voluptas est molestiae ex. Maiores est omnis labore nam atque.","deadline":"\ub9c8\uac10\uae30\ud55c\uc774 \uc815\ud574\uc838 \uc788\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.","isDone":3,"updated_at":"1 hour ago \uc804\uc5d0 \uc218\uc815\ub418\uc5c8\uc2b5\ub2c8\ub2e4."},{"id":4,"title":"Iste quae.","content":"Aut voluptatibus voluptates cum nulla. Eos id et reiciendis numquam placeat.","deadline":"\ub9c8\uac10\uae30\ud55c\uc774 \uc815\ud574\uc838 \uc788\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.","isDone":4,"updated_at":"1 hour ago \uc804\uc5d0 \uc218\uc815\ub418\uc5c8\uc2b5\ub2c8\ub2e4."}],"meta":{"current_page":1,"from":1,"last_page":11,"path":"http:\/\/127.0.0.1:8000\/api\/v1\/todos","per_page":5,"to":5,"total":51}}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '57'
-          access-control-allow-origin: '*'
-        description: null
+        content: |
+          {
+              "data": [
+                  {
+                      "id": 52,
+                      "title": "안녕하세요? - 예시입니다",
+                      "content": "하하하하",
+                      "deadline": "2021-12-12",
+                      "isDone": 52,
+                      "updated_at": "4 hours ago 전에 수정되었습니다."
+                  },
+                  {
+                      "id": 51,
+                      "title": "안녕하세요?",
+                      "content": "하하하",
+                      "deadline": "마감기한이 정해져 있지 않습니다.",
+                      "isDone": 51,
+                      "updated_at": "4 hours ago 전에 수정되었습니다."
+                  },
+                  {
+                      "id": 2,
+                      "title": "Reprehenderit.",
+                      "content": "Quisquam ipsa dignissimos qui ea ut quis maiores. Sit velit deleniti at est.",
+                      "deadline": "마감기한이 정해져 있지 않습니다.",
+                      "isDone": 2,
+                      "updated_at": "4 hours ago 전에 수정되었습니다."
+                  },
+                  {
+                      "id": 3,
+                      "title": "Eum.",
+                      "content": "Cum blanditiis voluptas est molestiae ex. Maiores est omnis labore nam atque.",
+                      "deadline": "마감기한이 정해져 있지 않습니다.",
+                      "isDone": 3,
+                      "updated_at": "4 hours ago 전에 수정되었습니다."
+                  },
+                  {
+                      "id": 4,
+                      "title": "Iste quae.",
+                      "content": "Aut voluptatibus voluptates cum nulla. Eos id et reiciendis numquam placeat.",
+                      "deadline": "마감기한이 정해져 있지 않습니다.",
+                      "isDone": 4,
+                      "updated_at": "4 hours ago 전에 수정되었습니다."
+                  }
+              ],
+              "meta": {
+                  "current_page": 1,
+                  "from": 1,
+                  "last_page": 11,
+                  "path": "http://127.0.0.1:8000/api/v1/todos",
+                  "per_page": 5,
+                  "to": 5,
+                  "total": 51
+              }
+          }
+        headers: []
+        description: '200, 성공'
     responseFields: []
   -
     httpMethods:
       - POST
     uri: api/v1/todos
     metadata:
-      title: 'Store a newly created resource in storage.'
-      description: ''
+      title: 'add a new todo'
+      description: |-
+        포스트 추가하기
+        <aside class="notice">We mean it; you really should.😕</aside>
       authenticated: false
     headers:
       Content-Type: application/json
       Accept: application/json
+      Api-Version: v1
     urlParameters: []
     queryParameters: []
     bodyParameters:
       title:
         name: title
-        description: 'Must not be greater than 50 characters.'
+        description: '할일 제목'
         required: true
-        example: qecojijmmixynnibhlussaqdznaxngxzsstkqwxqnnmu
+        example: '책 읽기'
         type: string
       content:
         name: content
-        description: 'Must not be greater than 255 characters.'
+        description: '할일 내용.'
         required: false
-        example: ldalxaoielhxaalvwortpoyyhfmhjlrtebrdiwwixsnitpjqzdmhodubchclytwilexicepuqlzjolufcgoofzozrxuogvmhphetinmaejnzqubgdxktyzjkwlakcxleqchgbbauiyjvkiqhadmczxalsmquwsxjhmpfnyogpdkcpogmtjulkoagvwkrbvnqqbcjcofcvycwuwxziztvravmbcftgvmthkuqwnabixlukwzvmvzovouuamzmhs
-        type: string
+        example: '자기개발에 대한 책을 읽자'
+        type: longText
       deadline:
         name: deadline
-        description: 'Must be a valid date.'
+        description: 마감기한
         required: false
-        example: '2021-08-22T11:21:44'
-        type: string
+        example: null
+        type: date
       isDone:
         name: isDone
-        description: ''
+        description: 완료여부
         required: true
-        example: false
+        example: true
         type: boolean
-    responses: []
+    responses:
+      -
+        status: 201
+        content: |
+          {
+              "data": {
+                  "id": 54,
+                  "title": "새 할일",
+                  "content": "저녁 장보기",
+                  "deadline": "2021-12-01",
+                  "isDone": "미완료",
+                  "create_at": "1 second ago 전에 작성되었다."
+              }
+          }
+        headers: []
+        description: '201, success'
+      -
+        status: 201
+        content: |
+          {
+              "data": {
+                  "id": 50,
+                  "title": "빨래하기. - 예시",
+                  "content": "빨래돌릴때 수건 먼저 돌리기 - 예시",
+                  "deadline": "마감기한이 정해져있지 않습니다.",
+                  "isDone": "완료",
+                  "create_at": "15 hours ago 전에 작성되었다."
+              }
+          }
+        headers: []
+        description: '201, 마감기한이 정해져 있지 않을 때'
+      -
+        status: 422
+        content: |
+          {
+              "message": "The given data was invalid.",
+              "errors": {
+                  "deadline": [
+                      "The deadline is not a valid date."
+                  ]
+              }
+          }
+        headers: []
+        description: '422, 데이터가 유효하지 않을 때'
     responseFields: []
   -
     httpMethods:
       - GET
     uri: 'api/v1/todos/{id}'
     metadata:
-      title: 'Display the specified resource.'
-      description: ''
+      title: 'get a todo'
+      description: |-
+        특정 할일 가져오기
+
+        <aside class="notice">urlParam 에 대한 설명</aside>
       authenticated: false
     headers:
       Content-Type: application/json
       Accept: application/json
+      Api-Version: v1
     urlParameters:
       id:
         name: id
-        description: 'The ID of the todo.'
+        description: '할일 아이디'
         required: true
-        example: 14
+        example: 10
         type: integer
     queryParameters: []
     bodyParameters: []
     responses:
       -
+        status: 200
+        content: |
+          {
+              "data": {
+                  "id": 50,
+                  "title": "빨래하기. - 예시",
+                  "content": "빨래돌릴때 수건 먼저 돌리기 - 예시",
+                  "deadline": "2020-12-08",
+                  "isDone": "완료",
+                  "create_at": "15 hours ago 전에 작성되었다."
+              }
+          }
+        headers: []
+        description: '200, success'
+      -
+        status: 200
+        content: |
+          {
+              "data": {
+                  "id": 50,
+                  "title": "빨래하기. - 예시",
+                  "content": "빨래돌릴때 수건 먼저 돌리기 - 예시",
+                  "deadline": "마감기한이 정해져있지 않습니다.",
+                  "isDone": "완료",
+                  "create_at": "15 hours ago 전에 작성되었다."
+              }
+          }
+        headers: []
+        description: '200, 마감기한이 정해져 있지 않을때'
+      -
         status: 404
-        content: '{"message":"\ud574\ub2f9 \ud560\uc77c\uc744 \ucc3e\uc744 \uc218\uac00 \uc5c6\uc2b5\ub2c8\ub2e4."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
-          access-control-allow-origin: '*'
-        description: null
+        content: |
+          {
+              "message": "해당 할일을 찾을 수가 없습니다."
+          }
+        headers: []
+        description: '404, todo not found'
     responseFields: []
   -
     httpMethods:
@@ -105,66 +243,121 @@ endpoints:
       - PATCH
     uri: 'api/v1/todos/{id}'
     metadata:
-      title: 'Update the specified resource in storage.'
-      description: ''
+      title: 'Update a todo'
+      description: |-
+        특정 할일 수정하기
+        <aside class="notice">We mean it; you really should.😕</aside>
       authenticated: false
     headers:
       Content-Type: application/json
       Accept: application/json
+      Api-Version: v1
     urlParameters:
       id:
         name: id
-        description: 'The ID of the todo.'
+        description: '할일 아이디'
         required: true
-        example: 5
+        example: 10
         type: integer
     queryParameters: []
     bodyParameters:
       title:
         name: title
-        description: 'Must not be greater than 50 characters.'
+        description: '할일 제목'
         required: true
-        example: cnoilpkytkikpgxorgniypsxpm
+        example: '책 읽기'
         type: string
       content:
         name: content
-        description: 'Must not be greater than 255 characters.'
+        description: '할일 내용.'
         required: false
-        example: pekjnaljrgzpexnalqsugiehcdnxwbngzwxytsgvvfqrw
-        type: string
+        example: '자기개발에 대한 책을 읽자'
+        type: longText
       deadline:
         name: deadline
-        description: 'Must be a valid date.'
+        description: 마감기한
         required: false
-        example: '2021-08-22T11:21:44'
-        type: string
+        example: null
+        type: date
       isDone:
         name: isDone
-        description: ''
+        description: 완료여부
         required: true
-        example: false
+        example: true
         type: boolean
-    responses: []
+    responses:
+      -
+        status: 200
+        content: |
+          {
+              "data": {
+                  "id": 54,
+                  "title": "새 할일",
+                  "content": "저녁 장보기",
+                  "deadline": "2021-12-01",
+                  "isDone": "미완료",
+                  "create_at": "1 second ago 전에 작성되었다."
+              }
+          }
+        headers: []
+        description: '200, success'
+      -
+        status: 404
+        content: |
+          {
+              "message": "해당 할일을 찾을 수가 없습니다."
+          }
+        headers: []
+        description: '404, todo not found'
+      -
+        status: 422
+        content: |
+          {
+              "message": "The given data was invalid.",
+              "errors": {
+                  "deadline": [
+                      "The deadline is not a valid date."
+                  ]
+              }
+          }
+        headers: []
+        description: '422, 데이터가 유효하지 않을 때'
     responseFields: []
   -
     httpMethods:
       - DELETE
     uri: 'api/v1/todos/{id}'
     metadata:
-      title: 'Remove the specified resource from storage.'
-      description: ''
+      title: 'Remove a todo'
+      description: |-
+        특정 할일 삭제하기
+        <aside class="notice">We mean it; you really should.😕</aside>
       authenticated: false
     headers:
       Content-Type: application/json
       Accept: application/json
+      Api-Version: v1
     urlParameters:
       id:
         name: id
-        description: 'The ID of the todo.'
+        description: '할일 아이디'
         required: true
-        example: 1
+        example: 10
         type: integer
     queryParameters: []
     bodyParameters: []
-    responses: []
+    responses:
+      -
+        status: 204
+        content: '{}'
+        headers: []
+        description: '204, success'
+      -
+        status: 404
+        content: |
+          {
+              "message": "해당 할일을 찾을 수가 없습니다."
+          }
+        headers: []
+        description: '404, todo not found'
     responseFields: []
