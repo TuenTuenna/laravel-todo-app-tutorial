@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
-  title: TodoApp
-  description: ''
+  title: '쩡대리 Todo App'
+  description: '안녕하세요?! 오늘도 빡코딩 하고 계신가요? 본 api 는 연습용 api 입니다! 현재 버전은 [v1] 입니다.'
   version: 1.0.0
 servers:
   -
@@ -9,9 +9,19 @@ servers:
 paths:
   /api/v1/todos:
     get:
-      summary: 'Display a listing of the resource.'
-      description: ''
+      summary: 'Get a list of posts'
+      description: "포스트 리스트 가져오기\n<aside class=\"notice\">We mean it; you really should.😕</aside>"
       parameters:
+        -
+          in: query
+          name: page
+          description: 페이지
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 페이지
+            example: 1
         -
           in: header
           name: Content-Type
@@ -26,9 +36,16 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Api-Version
+          description: ''
+          example: v1
+          schema:
+            type: string
       responses:
         200:
-          description: ''
+          description: 성공
           content:
             application/json:
               schema:
@@ -37,39 +54,39 @@ paths:
                   data:
                     -
                       id: 52
-                      title: '안녕하세요?'
+                      title: '안녕하세요? - 예시입니다'
                       content: 하하하하
                       deadline: '2021-12-12'
                       isDone: 52
-                      updated_at: '28 minutes ago 전에 수정되었습니다.'
+                      updated_at: '4 hours ago 전에 수정되었습니다.'
                     -
                       id: 51
                       title: '안녕하세요?'
                       content: 하하하
                       deadline: '마감기한이 정해져 있지 않습니다.'
                       isDone: 51
-                      updated_at: '30 minutes ago 전에 수정되었습니다.'
+                      updated_at: '4 hours ago 전에 수정되었습니다.'
                     -
                       id: 2
                       title: Reprehenderit.
                       content: 'Quisquam ipsa dignissimos qui ea ut quis maiores. Sit velit deleniti at est.'
                       deadline: '마감기한이 정해져 있지 않습니다.'
                       isDone: 2
-                      updated_at: '1 hour ago 전에 수정되었습니다.'
+                      updated_at: '4 hours ago 전에 수정되었습니다.'
                     -
                       id: 3
                       title: Eum.
                       content: 'Cum blanditiis voluptas est molestiae ex. Maiores est omnis labore nam atque.'
                       deadline: '마감기한이 정해져 있지 않습니다.'
                       isDone: 3
-                      updated_at: '1 hour ago 전에 수정되었습니다.'
+                      updated_at: '4 hours ago 전에 수정되었습니다.'
                     -
                       id: 4
                       title: 'Iste quae.'
                       content: 'Aut voluptatibus voluptates cum nulla. Eos id et reiciendis numquam placeat.'
                       deadline: '마감기한이 정해져 있지 않습니다.'
                       isDone: 4
-                      updated_at: '1 hour ago 전에 수정되었습니다.'
+                      updated_at: '4 hours ago 전에 수정되었습니다.'
                   meta:
                     current_page: 1
                     from: 1
@@ -84,39 +101,39 @@ paths:
                     example:
                       -
                         id: 52
-                        title: '안녕하세요?'
+                        title: '안녕하세요? - 예시입니다'
                         content: 하하하하
                         deadline: '2021-12-12'
                         isDone: 52
-                        updated_at: '28 minutes ago 전에 수정되었습니다.'
+                        updated_at: '4 hours ago 전에 수정되었습니다.'
                       -
                         id: 51
                         title: '안녕하세요?'
                         content: 하하하
                         deadline: '마감기한이 정해져 있지 않습니다.'
                         isDone: 51
-                        updated_at: '30 minutes ago 전에 수정되었습니다.'
+                        updated_at: '4 hours ago 전에 수정되었습니다.'
                       -
                         id: 2
                         title: Reprehenderit.
                         content: 'Quisquam ipsa dignissimos qui ea ut quis maiores. Sit velit deleniti at est.'
                         deadline: '마감기한이 정해져 있지 않습니다.'
                         isDone: 2
-                        updated_at: '1 hour ago 전에 수정되었습니다.'
+                        updated_at: '4 hours ago 전에 수정되었습니다.'
                       -
                         id: 3
                         title: Eum.
                         content: 'Cum blanditiis voluptas est molestiae ex. Maiores est omnis labore nam atque.'
                         deadline: '마감기한이 정해져 있지 않습니다.'
                         isDone: 3
-                        updated_at: '1 hour ago 전에 수정되었습니다.'
+                        updated_at: '4 hours ago 전에 수정되었습니다.'
                       -
                         id: 4
                         title: 'Iste quae.'
                         content: 'Aut voluptatibus voluptates cum nulla. Eos id et reiciendis numquam placeat.'
                         deadline: '마감기한이 정해져 있지 않습니다.'
                         isDone: 4
-                        updated_at: '1 hour ago 전에 수정되었습니다.'
+                        updated_at: '4 hours ago 전에 수정되었습니다.'
                     items:
                       type: object
                   meta:
@@ -130,11 +147,11 @@ paths:
                       to: 5
                       total: 51
       tags:
-        - Endpoints
+        - '포스트 관리'
       security: []
     post:
-      summary: 'Store a newly created resource in storage.'
-      description: ''
+      summary: 'add a new todo'
+      description: "포스트 추가하기\n<aside class=\"notice\">We mean it; you really should.😕</aside>"
       parameters:
         -
           in: header
@@ -150,9 +167,60 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+        -
+          in: header
+          name: Api-Version
+          description: ''
+          example: v1
+          schema:
+            type: string
+      responses:
+        201:
+          description: '마감기한이 정해져 있지 않을 때'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 50
+                    title: '빨래하기. - 예시'
+                    content: '빨래돌릴때 수건 먼저 돌리기 - 예시'
+                    deadline: '마감기한이 정해져있지 않습니다.'
+                    isDone: 완료
+                    create_at: '15 hours ago 전에 작성되었다.'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 50
+                      title: '빨래하기. - 예시'
+                      content: '빨래돌릴때 수건 먼저 돌리기 - 예시'
+                      deadline: '마감기한이 정해져있지 않습니다.'
+                      isDone: 완료
+                      create_at: '15 hours ago 전에 작성되었다.'
+        422:
+          description: '데이터가 유효하지 않을 때'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    deadline:
+                      - 'The deadline is not a valid date.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    example:
+                      deadline:
+                        - 'The deadline is not a valid date.'
       tags:
-        - Endpoints
+        - '포스트 관리'
       requestBody:
         required: true
         content:
@@ -162,28 +230,28 @@ paths:
               properties:
                 title:
                   type: string
-                  description: 'Must not be greater than 50 characters.'
-                  example: qecojijmmixynnibhlussaqdznaxngxzsstkqwxqnnmu
+                  description: '할일 제목'
+                  example: '책 읽기'
                 content:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: ldalxaoielhxaalvwortpoyyhfmhjlrtebrdiwwixsnitpjqzdmhodubchclytwilexicepuqlzjolufcgoofzozrxuogvmhphetinmaejnzqubgdxktyzjkwlakcxleqchgbbauiyjvkiqhadmczxalsmquwsxjhmpfnyogpdkcpogmtjulkoagvwkrbvnqqbcjcofcvycwuwxziztvravmbcftgvmthkuqwnabixlukwzvmvzovouuamzmhs
+                  type: longText
+                  description: '할일 내용.'
+                  example: '자기개발에 대한 책을 읽자'
                 deadline:
-                  type: string
-                  description: 'Must be a valid date.'
-                  example: '2021-08-22T11:21:44'
+                  type: date
+                  description: 마감기한
+                  example: null
                 isDone:
                   type: boolean
-                  description: ''
-                  example: false
+                  description: 완료여부
+                  example: true
               required:
                 - title
                 - isDone
       security: []
   '/api/v1/todos/{id}':
     get:
-      summary: 'Display the specified resource.'
-      description: ''
+      summary: 'get a todo'
+      description: "특정 할일 가져오기\n\n<aside class=\"notice\">urlParam 에 대한 설명</aside>"
       parameters:
         -
           in: header
@@ -199,9 +267,40 @@ paths:
           example: application/json
           schema:
             type: string
-      responses:
-        404:
+        -
+          in: header
+          name: Api-Version
           description: ''
+          example: v1
+          schema:
+            type: string
+      responses:
+        200:
+          description: '마감기한이 정해져 있지 않을때'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 50
+                    title: '빨래하기. - 예시'
+                    content: '빨래돌릴때 수건 먼저 돌리기 - 예시'
+                    deadline: '마감기한이 정해져있지 않습니다.'
+                    isDone: 완료
+                    create_at: '15 hours ago 전에 작성되었다.'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 50
+                      title: '빨래하기. - 예시'
+                      content: '빨래돌릴때 수건 먼저 돌리기 - 예시'
+                      deadline: '마감기한이 정해져있지 않습니다.'
+                      isDone: 완료
+                      create_at: '15 hours ago 전에 작성되었다.'
+        404:
+          description: 'todo not found'
           content:
             application/json:
               schema:
@@ -213,11 +312,11 @@ paths:
                     type: string
                     example: '해당 할일을 찾을 수가 없습니다.'
       tags:
-        - Endpoints
+        - '포스트 관리'
       security: []
     put:
-      summary: 'Update the specified resource in storage.'
-      description: ''
+      summary: 'Update a todo'
+      description: "특정 할일 수정하기\n<aside class=\"notice\">We mean it; you really should.😕</aside>"
       parameters:
         -
           in: header
@@ -233,9 +332,72 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+        -
+          in: header
+          name: Api-Version
+          description: ''
+          example: v1
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 54
+                    title: '새 할일'
+                    content: '저녁 장보기'
+                    deadline: '2021-12-01'
+                    isDone: 미완료
+                    create_at: '1 second ago 전에 작성되었다.'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 54
+                      title: '새 할일'
+                      content: '저녁 장보기'
+                      deadline: '2021-12-01'
+                      isDone: 미완료
+                      create_at: '1 second ago 전에 작성되었다.'
+        404:
+          description: 'todo not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: '해당 할일을 찾을 수가 없습니다.'
+                properties:
+                  message:
+                    type: string
+                    example: '해당 할일을 찾을 수가 없습니다.'
+        422:
+          description: '데이터가 유효하지 않을 때'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    deadline:
+                      - 'The deadline is not a valid date.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    example:
+                      deadline:
+                        - 'The deadline is not a valid date.'
       tags:
-        - Endpoints
+        - '포스트 관리'
       requestBody:
         required: true
         content:
@@ -245,27 +407,27 @@ paths:
               properties:
                 title:
                   type: string
-                  description: 'Must not be greater than 50 characters.'
-                  example: cnoilpkytkikpgxorgniypsxpm
+                  description: '할일 제목'
+                  example: '책 읽기'
                 content:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: pekjnaljrgzpexnalqsugiehcdnxwbngzwxytsgvvfqrw
+                  type: longText
+                  description: '할일 내용.'
+                  example: '자기개발에 대한 책을 읽자'
                 deadline:
-                  type: string
-                  description: 'Must be a valid date.'
-                  example: '2021-08-22T11:21:44'
+                  type: date
+                  description: 마감기한
+                  example: null
                 isDone:
                   type: boolean
-                  description: ''
-                  example: false
+                  description: 완료여부
+                  example: true
               required:
                 - title
                 - isDone
       security: []
     delete:
-      summary: 'Remove the specified resource from storage.'
-      description: ''
+      summary: 'Remove a todo'
+      description: "특정 할일 삭제하기\n<aside class=\"notice\">We mean it; you really should.😕</aside>"
       parameters:
         -
           in: header
@@ -281,20 +443,41 @@ paths:
           example: application/json
           schema:
             type: string
-      responses: {  }
+        -
+          in: header
+          name: Api-Version
+          description: ''
+          example: v1
+          schema:
+            type: string
+      responses:
+        204:
+          description: success
+        404:
+          description: 'todo not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: '해당 할일을 찾을 수가 없습니다.'
+                properties:
+                  message:
+                    type: string
+                    example: '해당 할일을 찾을 수가 없습니다.'
       tags:
-        - Endpoints
+        - '포스트 관리'
       security: []
     parameters:
       -
         in: path
         name: id
-        description: 'The ID of the todo.'
-        example: 14
+        description: '할일 아이디'
+        example: 10
         required: true
         schema:
           type: integer
 tags:
   -
-    name: Endpoints
-    description: ''
+    name: '포스트 관리'
+    description: "\nAPIs for managing posts\n포스트를 관리합니다."
