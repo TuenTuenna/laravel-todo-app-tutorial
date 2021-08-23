@@ -24,7 +24,7 @@ class TodoResource extends JsonResource
             'title' => $this->title,
             'content' => $this->content,
             'deadline' => ($this->deadline == null) ? "마감기한이 정해져 있지 않습니다." : date('Y-m-d', strtotime($this->deadline)),
-            'isDone' => $this->isDone,
+//            'isDone' => $this->isDone,
             'updated_at' => $this->updated_at->diffForHumans() . " 전에 수정되었습니다.",
         ];
     }
