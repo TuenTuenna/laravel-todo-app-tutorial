@@ -29,7 +29,7 @@ class TodoFactory extends Factory
 //        - 완료여부 : boolean default false
         return [
             'title' => $this->faker->text(15),
-            'content' => $this->faker->text(100),
+            'content' => $this->faker->text(100)
         ];
     }
 }
