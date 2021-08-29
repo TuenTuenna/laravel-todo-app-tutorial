@@ -9,8 +9,8 @@ servers:
 paths:
   /api/v1/todos:
     get:
-      summary: 'Get a list of posts'
-      description: "포스트 리스트 가져오기\n<aside class=\"notice\">We mean it; you really should.😕</aside>"
+      summary: 'Get a list of todos'
+      description: "할일 목록 가져오기\n<aside class=\"notice\">We mean it; you really should.😕</aside>"
       parameters:
         -
           in: query
@@ -147,7 +147,7 @@ paths:
                       to: 5
                       total: 51
       tags:
-        - '포스트 관리'
+        - '할일 관리'
       security: []
     post:
       summary: 'add a new todo'
@@ -220,7 +220,7 @@ paths:
                       deadline:
                         - 'The deadline is not a valid date.'
       tags:
-        - '포스트 관리'
+        - '할일 관리'
       requestBody:
         required: true
         content:
@@ -312,7 +312,7 @@ paths:
                     type: string
                     example: '해당 할일을 찾을 수가 없습니다.'
       tags:
-        - '포스트 관리'
+        - '할일 관리'
       security: []
     put:
       summary: 'Update a todo'
@@ -397,7 +397,7 @@ paths:
                       deadline:
                         - 'The deadline is not a valid date.'
       tags:
-        - '포스트 관리'
+        - '할일 관리'
       requestBody:
         required: true
         content:
@@ -466,7 +466,7 @@ paths:
                     type: string
                     example: '해당 할일을 찾을 수가 없습니다.'
       tags:
-        - '포스트 관리'
+        - '할일 관리'
       security: []
     parameters:
       -
@@ -477,7 +477,162 @@ paths:
         required: true
         schema:
           type: integer
+  /api/v1/todos/search:
+    get:
+      summary: 'Search todo'
+      description: "할일 검색하기\n<aside class=\"notice\">We mean it; you really should.😕</aside>"
+      parameters:
+        -
+          in: query
+          name: query
+          description: 검색어
+          example: 안녕
+          required: false
+          schema:
+            type: string
+            description: 검색어
+            example: 안녕
+        -
+          in: query
+          name: page
+          description: 페이지
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 페이지
+            example: 1
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Api-Version
+          description: ''
+          example: v1
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 52
+                      title: '안녕하세요? - 예시입니다'
+                      content: 하하하하
+                      deadline: '2021-12-12'
+                      isDone: 52
+                      updated_at: '4 hours ago 전에 수정되었습니다.'
+                    -
+                      id: 51
+                      title: '안녕하세요?'
+                      content: 하하하
+                      deadline: '마감기한이 정해져 있지 않습니다.'
+                      isDone: 51
+                      updated_at: '4 hours ago 전에 수정되었습니다.'
+                    -
+                      id: 2
+                      title: Reprehenderit.
+                      content: 'Quisquam ipsa dignissimos qui ea ut quis maiores. Sit velit deleniti at est.'
+                      deadline: '마감기한이 정해져 있지 않습니다.'
+                      isDone: 2
+                      updated_at: '4 hours ago 전에 수정되었습니다.'
+                    -
+                      id: 3
+                      title: Eum.
+                      content: 'Cum blanditiis voluptas est molestiae ex. Maiores est omnis labore nam atque.'
+                      deadline: '마감기한이 정해져 있지 않습니다.'
+                      isDone: 3
+                      updated_at: '4 hours ago 전에 수정되었습니다.'
+                    -
+                      id: 4
+                      title: 'Iste quae.'
+                      content: 'Aut voluptatibus voluptates cum nulla. Eos id et reiciendis numquam placeat.'
+                      deadline: '마감기한이 정해져 있지 않습니다.'
+                      isDone: 4
+                      updated_at: '4 hours ago 전에 수정되었습니다.'
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 11
+                    path: 'http://127.0.0.1:8000/api/v1/todos'
+                    per_page: 5
+                    to: 5
+                    total: 51
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 52
+                        title: '안녕하세요? - 예시입니다'
+                        content: 하하하하
+                        deadline: '2021-12-12'
+                        isDone: 52
+                        updated_at: '4 hours ago 전에 수정되었습니다.'
+                      -
+                        id: 51
+                        title: '안녕하세요?'
+                        content: 하하하
+                        deadline: '마감기한이 정해져 있지 않습니다.'
+                        isDone: 51
+                        updated_at: '4 hours ago 전에 수정되었습니다.'
+                      -
+                        id: 2
+                        title: Reprehenderit.
+                        content: 'Quisquam ipsa dignissimos qui ea ut quis maiores. Sit velit deleniti at est.'
+                        deadline: '마감기한이 정해져 있지 않습니다.'
+                        isDone: 2
+                        updated_at: '4 hours ago 전에 수정되었습니다.'
+                      -
+                        id: 3
+                        title: Eum.
+                        content: 'Cum blanditiis voluptas est molestiae ex. Maiores est omnis labore nam atque.'
+                        deadline: '마감기한이 정해져 있지 않습니다.'
+                        isDone: 3
+                        updated_at: '4 hours ago 전에 수정되었습니다.'
+                      -
+                        id: 4
+                        title: 'Iste quae.'
+                        content: 'Aut voluptatibus voluptates cum nulla. Eos id et reiciendis numquam placeat.'
+                        deadline: '마감기한이 정해져 있지 않습니다.'
+                        isDone: 4
+                        updated_at: '4 hours ago 전에 수정되었습니다.'
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 11
+                      path: 'http://127.0.0.1:8000/api/v1/todos'
+                      per_page: 5
+                      to: 5
+                      total: 51
+      tags:
+        - 검색
+      security: []
 tags:
   -
-    name: '포스트 관리'
-    description: "\nAPIs for managing posts\n포스트를 관리합니다."
+    name: '할일 관리'
+    description: "\nAPIs for managing posts\n할일을 관리합니다."
+  -
+    name: 검색
+    description: "\nAPIs for search todos\n할일을 검색합니다."

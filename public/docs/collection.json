@@ -5,22 +5,22 @@
             "key": "baseUrl",
             "type": "string",
             "name": "string",
-            "value": "127.0.0.1:8000"
+            "value": "127.0.0.1"
         }
     ],
     "info": {
         "name": "\uca61\ub300\ub9ac Todo App",
-        "_postman_id": "2cc6b1d9-484e-4006-91b4-cf2d15244f86",
+        "_postman_id": "a4be2a63-d827-407d-add1-9e6c1fe9cf60",
         "description": "\uc548\ub155\ud558\uc138\uc694?! \uc624\ub298\ub3c4 \ube61\ucf54\ub529 \ud558\uace0 \uacc4\uc2e0\uac00\uc694? \ubcf8 api \ub294 \uc5f0\uc2b5\uc6a9 api \uc785\ub2c8\ub2e4! \ud604\uc7ac \ubc84\uc804\uc740 [v1] \uc785\ub2c8\ub2e4.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
         {
-            "name": "\ud3ec\uc2a4\ud2b8 \uad00\ub9ac",
-            "description": "\nAPIs for managing posts\n\ud3ec\uc2a4\ud2b8\ub97c \uad00\ub9ac\ud569\ub2c8\ub2e4.",
+            "name": "\ud560\uc77c \uad00\ub9ac",
+            "description": "\nAPIs for managing posts\n\ud560\uc77c\uc744 \uad00\ub9ac\ud569\ub2c8\ub2e4.",
             "item": [
                 {
-                    "name": "Get a list of posts",
+                    "name": "Get a list of todos",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -52,7 +52,7 @@
                             }
                         ],
                         "body": null,
-                        "description": "\ud3ec\uc2a4\ud2b8 \ub9ac\uc2a4\ud2b8 \uac00\uc838\uc624\uae30\n<aside class=\"notice\">We mean it; you really should.\ud83d\ude15<\/aside>",
+                        "description": "\ud560\uc77c \ubaa9\ub85d \uac00\uc838\uc624\uae30\n<aside class=\"notice\">We mean it; you really should.\ud83d\ude15<\/aside>",
                         "auth": {
                             "type": "noauth"
                         }
@@ -295,6 +295,65 @@
                             "code": 404,
                             "body": "{\n    \"message\": \"\ud574\ub2f9 \ud560\uc77c\uc744 \ucc3e\uc744 \uc218\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.\"\n}\n",
                             "name": "todo not found"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "\uac80\uc0c9",
+            "description": "\nAPIs for search todos\n\ud560\uc77c\uc744 \uac80\uc0c9\ud569\ub2c8\ub2e4.",
+            "item": [
+                {
+                    "name": "Search todo",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/todos\/search",
+                            "query": [
+                                {
+                                    "key": "query",
+                                    "value": "%EC%95%88%EB%85%95",
+                                    "description": "\uac80\uc0c9\uc5b4",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "\ud398\uc774\uc9c0",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/todos\/search?query=%EC%95%88%EB%85%95&page=1"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": null,
+                        "description": "\ud560\uc77c \uac80\uc0c9\ud558\uae30\n<aside class=\"notice\">We mean it; you really should.\ud83d\ude15<\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": [\n        {\n            \"id\": 52,\n            \"title\": \"\uc548\ub155\ud558\uc138\uc694? - \uc608\uc2dc\uc785\ub2c8\ub2e4\",\n            \"content\": \"\ud558\ud558\ud558\ud558\",\n            \"deadline\": \"2021-12-12\",\n            \"isDone\": 52,\n            \"updated_at\": \"4 hours ago \uc804\uc5d0 \uc218\uc815\ub418\uc5c8\uc2b5\ub2c8\ub2e4.\"\n        },\n        {\n            \"id\": 51,\n            \"title\": \"\uc548\ub155\ud558\uc138\uc694?\",\n            \"content\": \"\ud558\ud558\ud558\",\n            \"deadline\": \"\ub9c8\uac10\uae30\ud55c\uc774 \uc815\ud574\uc838 \uc788\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.\",\n            \"isDone\": 51,\n            \"updated_at\": \"4 hours ago \uc804\uc5d0 \uc218\uc815\ub418\uc5c8\uc2b5\ub2c8\ub2e4.\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Reprehenderit.\",\n            \"content\": \"Quisquam ipsa dignissimos qui ea ut quis maiores. Sit velit deleniti at est.\",\n            \"deadline\": \"\ub9c8\uac10\uae30\ud55c\uc774 \uc815\ud574\uc838 \uc788\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.\",\n            \"isDone\": 2,\n            \"updated_at\": \"4 hours ago \uc804\uc5d0 \uc218\uc815\ub418\uc5c8\uc2b5\ub2c8\ub2e4.\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Eum.\",\n            \"content\": \"Cum blanditiis voluptas est molestiae ex. Maiores est omnis labore nam atque.\",\n            \"deadline\": \"\ub9c8\uac10\uae30\ud55c\uc774 \uc815\ud574\uc838 \uc788\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.\",\n            \"isDone\": 3,\n            \"updated_at\": \"4 hours ago \uc804\uc5d0 \uc218\uc815\ub418\uc5c8\uc2b5\ub2c8\ub2e4.\"\n        },\n        {\n            \"id\": 4,\n            \"title\": \"Iste quae.\",\n            \"content\": \"Aut voluptatibus voluptates cum nulla. Eos id et reiciendis numquam placeat.\",\n            \"deadline\": \"\ub9c8\uac10\uae30\ud55c\uc774 \uc815\ud574\uc838 \uc788\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.\",\n            \"isDone\": 4,\n            \"updated_at\": \"4 hours ago \uc804\uc5d0 \uc218\uc815\ub418\uc5c8\uc2b5\ub2c8\ub2e4.\"\n        }\n    ],\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 11,\n        \"path\": \"http:\/\/127.0.0.1:8000\/api\/v1\/todos\",\n        \"per_page\": 5,\n        \"to\": 5,\n        \"total\": 51\n    }\n}\n",
+                            "name": ""
                         }
                     ]
                 }

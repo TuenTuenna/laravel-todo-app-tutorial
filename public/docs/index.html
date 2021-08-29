@@ -52,7 +52,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: August 22 2021</li>
+            <li>Last updated: August 29 2021</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -71,17 +71,17 @@
         <h1>Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="">포스트 관리</h1>
+        <h1 id="">할일 관리</h1>
 
     <p>APIs for managing posts
-포스트를 관리합니다.</p>
+할일을 관리합니다.</p>
 
-            <h2 id="-GETapi-v1-todos">Get a list of posts</h2>
+            <h2 id="-GETapi-v1-todos">Get a list of todos</h2>
 
 <p>
 </p>
 
-<p>포스트 리스트 가져오기</p>
+<p>할일 목록 가져오기</p>
 <aside class="notice">We mean it; you really should.😕</aside>
 
 <span id="example-requests-GETapi-v1-todos">
@@ -820,6 +820,171 @@ fetch(url, {
     <br>
 <p>할일 아이디</p>            </p>
                     </form>
+
+        <h1 id="">검색</h1>
+
+    <p>APIs for search todos
+할일을 검색합니다.</p>
+
+            <h2 id="-GETapi-v1-todos-search">Search todo</h2>
+
+<p>
+</p>
+
+<p>할일 검색하기</p>
+<aside class="notice">We mean it; you really should.😕</aside>
+
+<span id="example-requests-GETapi-v1-todos-search">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/todos/search?query=%EC%95%88%EB%85%95&amp;page=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Api-Version: v1"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/todos/search"
+);
+
+const params = {
+    "query": "안녕",
+    "page": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-GETapi-v1-todos-search">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 52,
+            &quot;title&quot;: &quot;안녕하세요? - 예시입니다&quot;,
+            &quot;content&quot;: &quot;하하하하&quot;,
+            &quot;deadline&quot;: &quot;2021-12-12&quot;,
+            &quot;isDone&quot;: 52,
+            &quot;updated_at&quot;: &quot;4 hours ago 전에 수정되었습니다.&quot;
+        },
+        {
+            &quot;id&quot;: 51,
+            &quot;title&quot;: &quot;안녕하세요?&quot;,
+            &quot;content&quot;: &quot;하하하&quot;,
+            &quot;deadline&quot;: &quot;마감기한이 정해져 있지 않습니다.&quot;,
+            &quot;isDone&quot;: 51,
+            &quot;updated_at&quot;: &quot;4 hours ago 전에 수정되었습니다.&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;title&quot;: &quot;Reprehenderit.&quot;,
+            &quot;content&quot;: &quot;Quisquam ipsa dignissimos qui ea ut quis maiores. Sit velit deleniti at est.&quot;,
+            &quot;deadline&quot;: &quot;마감기한이 정해져 있지 않습니다.&quot;,
+            &quot;isDone&quot;: 2,
+            &quot;updated_at&quot;: &quot;4 hours ago 전에 수정되었습니다.&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;title&quot;: &quot;Eum.&quot;,
+            &quot;content&quot;: &quot;Cum blanditiis voluptas est molestiae ex. Maiores est omnis labore nam atque.&quot;,
+            &quot;deadline&quot;: &quot;마감기한이 정해져 있지 않습니다.&quot;,
+            &quot;isDone&quot;: 3,
+            &quot;updated_at&quot;: &quot;4 hours ago 전에 수정되었습니다.&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;title&quot;: &quot;Iste quae.&quot;,
+            &quot;content&quot;: &quot;Aut voluptatibus voluptates cum nulla. Eos id et reiciendis numquam placeat.&quot;,
+            &quot;deadline&quot;: &quot;마감기한이 정해져 있지 않습니다.&quot;,
+            &quot;isDone&quot;: 4,
+            &quot;updated_at&quot;: &quot;4 hours ago 전에 수정되었습니다.&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 11,
+        &quot;path&quot;: &quot;http:\/\/127.0.0.1:8000\/api\/v1\/todos&quot;,
+        &quot;per_page&quot;: 5,
+        &quot;to&quot;: 5,
+        &quot;total&quot;: 51
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-todos-search" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-todos-search"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-todos-search"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-todos-search" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-todos-search"></code></pre>
+</span>
+<form id="form-GETapi-v1-todos-search" data-method="GET"
+      data-path="api/v1/todos/search"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-todos-search', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-todos-search"
+                    onclick="tryItOut('GETapi-v1-todos-search');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-todos-search"
+                    onclick="cancelTryOut('GETapi-v1-todos-search');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-todos-search" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/todos/search</code></b>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>query</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="query"
+               data-endpoint="GETapi-v1-todos-search"
+               data-component="query"  hidden>
+    <br>
+<p>검색어</p>            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-v1-todos-search"
+               data-component="query"  hidden>
+    <br>
+<p>페이지</p>            </p>
+                </form>
 
     
 

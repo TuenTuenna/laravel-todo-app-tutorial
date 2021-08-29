@@ -11,17 +11,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 
 /**
- * @group 포스트 관리
+ * @group 할일 관리
  *
  * APIs for managing posts
- * 포스트를 관리합니다.
+ * 할일을 관리합니다.
  */
 class TodoController extends Controller
 {
     /**
-     * Get a list of posts
+     * Get a list of todos
      *
-     * 포스트 리스트 가져오기
+     * 할일 목록 가져오기
      * <aside class="notice">We mean it; you really should.😕</aside>
      *
      * @queryParam page integer 페이지 Example: 1
